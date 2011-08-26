@@ -217,6 +217,5 @@ var issue_tree = {
 
 // Main entry point
 if (!window.location.pathname.match('#no-issue-tree')) {
-  $('body').css('background', 'red');
   var issue = issue_tree.build_issue_object();
 }
