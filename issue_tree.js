@@ -3,6 +3,7 @@ var issue_tree = {
    * Parses the issue body searching for drupal.org issues.
    *
    * @todo strip cookies for iframe
+   * @todo Only run on issue pages
    */
 
   // jQuery selector for the issue body.
