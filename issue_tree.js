@@ -160,9 +160,12 @@ var issue_tree = {
   process_sub_node: function(issue) {
 
     issue.state = 'pending';
+
+    // Add iframe with the issue
     $('body').append('<iframe id="issue-'+ issue.id +'" />');
     $('#issue-' + issue.id).attr('src', '/node/'+ issue.id + '#no-issue-tree').hide();
 
+    // Iframe onload callback
     $('#issue-' + issue.id).load(function() {
       issue.state = 'processed';
       issue_tree.state = 'idle';
