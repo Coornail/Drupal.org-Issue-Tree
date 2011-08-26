@@ -103,11 +103,11 @@ var issue_tree = {
    * Returns the jQuery object for the subissue iframe.
    */
   get_subissue_iframe: function(id) {
-    return $($('#issue-' + id)[0].contentDocument);
+    return $($('#issue-tree')[0].contentDocument);
   },
 
   /**
-   * @todo implement
+   * Prepares the queue for processing the child issues.
    */
   prepare_queue: function(parent_, context) {
     var issue_numbers  = issue_tree.get_sub_issues();
@@ -118,6 +118,9 @@ var issue_tree = {
         issue_tree.sub_nodes[issue_number] = {id: issue_number, parent: parent_, state: 'pending'};
       }
     }
+
+    // Add iframe to load the issues in
+    $('body').append('<iframe id="issue-tree" />');
 
   },
 
@@ -156,11 +159,10 @@ var issue_tree = {
     issue.state = 'pending';
 
     // Add iframe with the issue.
-    $('body').append('<iframe id="issue-'+ issue.id +'" />');
-    $('#issue-' + issue.id).attr('src', '/node/'+ issue.id + '#no-issue-tree').hide();
+    $('#issue-tree').attr('src', '/node/'+ issue.id + '#no-issue-tree').hide();
 
     // Iframe onload callback.
-    $('#issue-' + issue.id).load(function() {
+    $('#issue-tree').load(function() {
       issue.state = 'processed';
       issue_tree.state = 'idle';
 
@@ -172,7 +174,6 @@ var issue_tree = {
         }
       }
 
-      $('#issue-'+ issue).remove();
     });
   },
 
