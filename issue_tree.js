@@ -142,7 +142,7 @@ var issue_tree = {
       if (!found_issue_to_process) {
         issue_tree.state = 'finished';
       } else {
-        issue_tree.process_sub_issues();
+        issue_tree.process_queue();
       }
     },
     3000);
