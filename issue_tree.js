@@ -109,7 +109,7 @@ var issue_tree = {
   /**
    * @todo implement
    */
-  build_issue_process_queue: function(parent_, context) {
+  prepare_queue: function(parent_, context) {
     var issues = [];
 
     var issue_numbers  = issue_tree.get_sub_issues();
@@ -124,7 +124,10 @@ var issue_tree = {
     return issues;
   },
 
-  process_sub_issues: function() {
+  /**
+   * Processes the issue_tree.sub_nodes queue.
+   */
+  process_queue: function() {
     setTimeout(function() {
       var found_issue_to_process = false;
 
@@ -149,7 +152,10 @@ var issue_tree = {
   },
 
   /**
+   * Processes one node from the issue_Tree.sub_nodes
    *
+   * @param issue Object
+   *   Issue object
    */
   process_sub_node: function(issue) {
 
@@ -204,14 +210,15 @@ var issue_tree = {
     issue['title'] = issue_tree.get_title(context);
     issue['data'] = issue_tree.get_summary(context);
     //issue['children'] = issue_tree.parse_sub_issues(context);
-    issue_tree.build_issue_process_queue(issue['id']);
-    issue_tree.process_sub_issues();
+    issue_tree.prepare_queue(issue['id']);
+    issue_tree.process_queue();
 
     return issue;
   }
 
 }
 
+// Main entry point
 if (!window.location.pathname.match('#no-issue-tree')) {
   $('body').css('background', 'red');
   var issue = issue_tree.build_issue_object();
