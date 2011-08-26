@@ -168,7 +168,7 @@ var issue_tree = {
       for (idx in children) {
         child = children[idx]
         if (!issue_tree.sub_nodes[child]) {
-          //issue_tree.sub_nodes[child] = {id: children[child], parent: issue.id, state: 'pending'};
+          issue_tree.sub_nodes[child] = {id: child, parent: issue.id, state: 'pending'};
         }
       }
 
