@@ -109,7 +109,7 @@ var issue_tree = {
   /**
    * Prepares the queue for processing the child issues.
    */
-  prepare_queue: function(parent_, context) {
+  prepare_queue: function(parent_) {
     var issue_numbers  = issue_tree.get_sub_issues();
 
     for (idx in issue_numbers) {
