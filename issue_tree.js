@@ -63,19 +63,6 @@ var issue_tree = {
   },
 
   /**
-   * Appends iframes to the body with the issue pages.
-   *
-   * @param issues array
-   *   Array of issue ids.
-   */
-  create_issue_iframes: function(issues) {
-    for(idx in issues) {
-      var issue = issues[idx]
-      $('body').append('<iframe id="issue-'+ issue +'" src="/node/'+ issue +'#no_issue_tree" width="300px" height="300px"></iframe>');
-    }
-  },
-
-  /**
    * Parses the details of an issue.
    */
   get_summary: function(context) {
