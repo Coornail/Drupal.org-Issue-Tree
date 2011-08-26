@@ -23,10 +23,10 @@ var issue_tree = {
    * All the sub nodes.
    *
    * [
-   *   2: {parent: null, state: 'parsed'},
-   *   3: {parent: 2, state: 'parsed'},
-   *   4: {parent: 2, state: 'processing'},
-   *   173: {parent: 3, state: 'pending'},
+   *   2: {id: 2, parent: null, state: 'parsed'},
+   *   3: {id: 3, parent: 2, state: 'parsed'},
+   *   4: {id 4:, parent: 2, state: 'processing'},
+   *   173: {id: 173, parent: 3, state: 'pending'},
    * ]
    */
   sub_nodes : [],
