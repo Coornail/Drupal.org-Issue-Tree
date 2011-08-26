@@ -33,7 +33,7 @@ var issue_tree = {
    *   173: {id: 173, parent: 3, state: 'pending'},
    * ]
    */
-  sub_nodes : [],
+  sub_nodes : {},
 
   /**
    * Flag to identify when the parsing is finished.
@@ -110,18 +110,15 @@ var issue_tree = {
    * @todo implement
    */
   prepare_queue: function(parent_, context) {
-    var issues = [];
-
     var issue_numbers  = issue_tree.get_sub_issues();
 
     for (idx in issue_numbers) {
       var issue_number = issue_numbers[idx];
-      if (!issue_tree.sub_nodes[issue_number]) {
+      if (issue_tree.sub_nodes[issue_number] === undefined) {
         issue_tree.sub_nodes[issue_number] = {id: issue_number, parent: parent_, state: 'pending'};
       }
     }
 
-    return issues;
   },
 
   /**
