@@ -102,7 +102,7 @@ var issue_tree = {
   /**
    * Returns the jQuery object for the subissue iframe.
    */
-  get_subissue_iframe: function(id) {
+  get_subissue_iframe: function() {
     return $($('#issue-tree')[0].contentDocument);
   },
 
@@ -166,7 +166,7 @@ var issue_tree = {
       issue.state = 'processed';
       issue_tree.state = 'idle';
 
-      var children = issue_tree.get_sub_issues(issue_tree.get_subissue_iframe(issue.id));
+      var children = issue_tree.get_sub_issues(issue_tree.get_subissue_iframe());
       for (idx in children) {
         child = children[idx]
         if (!issue_tree.sub_nodes[child]) {
