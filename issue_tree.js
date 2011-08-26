@@ -53,25 +53,80 @@ var issue_tree = {
   /**
    * Parses the details of an issue.
    */
-  parse_issue_summary: function(context) {
+  get_summary: function(context) {
     // Default context.
     context = context || document.body;
 
-    var issue = {};
+    var summary = {};
 
     $(issue_tree.issue_summary_selector + ' tr').each(function() {
       var key = $($(this).children()[0]).text().replace(':', '');
       var value = $($(this).children()[1]).text();
-      issue[key] = value;
+      summary[key] = value;
     });
 
-    return issue;
+    return summary;
   },
+
+  /**
+   * Gets the node id from the context.
+   * @todo implement
+   */
+  get_node_id: function (context) {
+    return 66;
+  },
+
+  /**
+   * @todo implement
+   */
+  get_title: function(context) {
+    return 'noname';
+  },
+
+  /**
+   * @todo implement
+   */
+  parse_sub_issues: function(context) {
+    return [];
+  },
+
+  /**
+   * Builds an issue object.
+   *
+   * For example:
+   *
+   * {
+   *   id: 123,
+   *   name: foobar,
+   *   data: {...},
+   *   children: [
+   *     {
+   *       id: 32452,
+   *       name: egiocd,
+   *       data: {},
+   *       children: [...],
+   *     },
+   *     ...
+   *   ]
+   * }
+   */
+  build_issue_object: function(context) {
+    // Default context.
+    context = context || document.body;
+    var issue = {};
+
+    issue['id'] = issue_tree.get_node_id(context);
+    issue['title'] = issue_tree.get_title(context);
+    issue['data'] = issue_tree.get_summary(context);
+    issue['children'] = issue_tree.parse_sub_issues(context);
+
+    return issue;
+  }
 
 }
 
 var issues = issue_tree.get_sub_issues();
-var current_issue = issue_tree.parse_issue_summary();
-console.log(current_issue);
+var issue = issue_tree.build_issue_object();
+console.log(issue);
 
 issue_tree.create_issue_iframes(issues);
