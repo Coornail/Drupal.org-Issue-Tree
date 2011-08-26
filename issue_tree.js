@@ -7,7 +7,6 @@ var issue_tree = {
    * Parses the issue body searching for drupal.org issues.
    *
    * @todo strip cookies for iframe
-   * @todo Only run on issue pages
    */
 
   // jQuery selector for the issue body.
@@ -211,11 +210,27 @@ var issue_tree = {
     issue_tree.process_queue();
 
     return issue;
+  },
+
+
+  /**
+   * Checks if the page is an issue page or not.
+   *
+   * @return Bool
+   */
+  is_issue_page: function() {
+    var url = window.location.pathname;
+
+    if (!url.match('^/node/[0-9]*$')) {
+      return false;
+    }
+
+    return ($('body.node-type-project-issue').length === 1);
   }
 
 }
 
 // Main entry point
-if (!window.location.pathname.match('#no-issue-tree')) {
+if (!window.location.pathname.match('#no-issue-tree') && issue_tree.is_issue_page()) {
   var issue = issue_tree.build_issue_object();
 }
