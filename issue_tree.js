@@ -111,7 +111,7 @@ var issue_tree = {
   prepare_queue: function(parent_) {
     var issue_numbers  = issue_tree.get_sub_issues();
 
-    for (idx in issue_numbers) {
+    for (var idx in issue_numbers) {
       var issue_number = issue_numbers[idx];
       if (issue_tree.sub_nodes[issue_number] === undefined) {
         issue_tree.sub_nodes[issue_number] = {id: issue_number, parent: parent_, state: 'pending'};
