@@ -1,0 +1,19 @@
+{
+  "name": "Issue Tree for Drupal.org",
+  "version": "1.0",
+  "description": "Weeee",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "http://drupal.org/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://drupal.org/*"],
+      "css": ["issue_tree.css"],
+      "js": ["jquery.js", "issue_tree.js"]
+    }
+  ]
+}
