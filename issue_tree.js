@@ -133,8 +133,6 @@ var issue_tree = {
 
       for (idx in issue_tree.sub_nodes) {
         if (issue_tree.sub_nodes[idx].state == 'pending' && issue_tree.state != 'finished') {
-          console.log('Processing '+ issue_tree.sub_nodes[idx].id);
-          console.log(issue_tree.sub_nodes);
           issue_tree.state = 'processing';
           issue_tree.process_sub_node(issue_tree.sub_nodes[idx]);
           found_issue_to_process = true;
@@ -143,7 +141,6 @@ var issue_tree = {
 
       if (!found_issue_to_process) {
         issue_tree.state = 'finished';
-        console.log(issue_tree.sub_nodes);
       } else {
         issue_tree.process_sub_issues();
       }
@@ -177,7 +174,6 @@ var issue_tree = {
           //issue_tree.sub_nodes[child] = {id: children[child], parent: issue.id, state: 'pending'};
         }
       }
-      console.log(issue_tree.sub_nodes);
 
       $('#issue-'+ issue).remove();
     });
