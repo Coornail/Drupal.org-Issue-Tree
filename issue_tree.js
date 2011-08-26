@@ -53,7 +53,7 @@ var issue_tree = {
   /**
    * Parses the details of an issue.
    */
-  parse_issue_data: function(context) {
+  parse_issue_summary: function(context) {
     // Default context.
     context = context || document.body;
 
@@ -71,7 +71,7 @@ var issue_tree = {
 }
 
 var issues = issue_tree.get_sub_issues();
-var current_issue = issue_tree.parse_issue_data();
+var current_issue = issue_tree.parse_issue_summary();
 console.log(current_issue);
 
 issue_tree.create_issue_iframes(issues);
