@@ -1,3 +1,7 @@
+/**
+ * @author Kornel Lugosi (Coornail) - coornail gmail com
+ */
+
 var issue_tree = {
   /**
    * Parses the issue body searching for drupal.org issues.
